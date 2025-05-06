@@ -1,0 +1,48 @@
+<h1>Prueba Primer Trimestre</h1>
+<br>
+<h2>Evelyn Guachamin</h2>
+<br>
+<h3>Grupo 2</h3>
+<br>
+<form [formGroup]="userForm" (ngSubmit)="onSubmit()">
+  <p>Escribe Tu Nombre Completo</p>
+  <input formControlName="fullName" placeholder="Nombre Completo" />
+  <br>
+  <p>Escribe Tu Correo Electrónico</p>
+  <input formControlName="email" placeholder="Email" type="email" />
+  <br>
+  <p>Escribe Tu Fecha de Nacimiento</p>
+  <mat-form-field appearance="fill">
+    <mat-label>Fecha de nacimiento</mat-label>
+    <input matInput [matDatepicker]="picker" formControlName="birthDate" placeholder="dd/mm/aa" />
+    <mat-datepicker #picker></mat-datepicker> 
+  </mat-form-field>
+  <br>
+  <p>Seleciona tu Género</p>
+  <select formControlName="gender">
+    <option value="male">Masculino</option>
+    <option value="female">Femenino</option>
+  </select>
+  <br>
+  <p>Seleciona tu Deporte Favorito</p>
+  <select formControlName="preferences" multiple>
+    <option *ngFor="let option of preferenceOptions" [value]="option">{{ option }}</option>
+  </select>
+  <br>
+  <p>Seleciona tu País</p>
+  <select formControlName="country">
+    <option *ngFor="let c of countries" [value]="c">{{ c }}</option>
+  </select>
+  <br>
+  <p>Por favor Subscribete</p>
+  <label>
+    <input type="checkbox" formControlName="newsletter" />
+    Subscribirse
+  </label>
+  <br>
+  <p>Mandanos un comentario para mejorar</p>
+  <textarea formControlName="comments" placeholder="Escribe el comentario"></textarea>
+  <br>
+  <button type="submit" color="success">Enviar</button>
+</form>
+<br>

@@ -25,3 +25,57 @@
 #container a {
   text-decoration: none;
 }
+.formulario {
+  max-width: 600px;
+  margin: auto;
+  padding: 1rem;
+}
+.formulario {
+  max-width: 600px;
+  margin: 20px auto;
+  padding: 20px;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  background-color: #f9f9f9;
+}
+.form-item {
+  margin-bottom: 20px;
+}
+.form-item label {
+  display: block;
+  margin-bottom: 8px;
+}
+.form-item input,
+.form-item select,
+.form-item textarea {
+  width: 100%;
+  padding: 8px;
+  font-size: 16px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+.form-item input[type="checkbox"] {
+  width: auto;
+}
+.form-item button {
+  padding: 15px 30px;
+  font-size: 18px;
+  font-weight: bold;
+  background-color: #28a745; /* Color verde para éxito */
+  color: white;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background-color 0.3s ease, transform 0.2s ease;
+  width: 100%; /* Botón de ancho completo */
+}
+.form-item button:disabled {
+  background-color: #ccc;
+}
+.form-item button:hover {
+  background-color: #218838; /* Color verde más oscuro al pasar el mouse */
+  transform: scale(1.05); /* Ligeramente más grande al pasar el mouse */
+}
+.form-item button:focus {
+  outline: none;
+}

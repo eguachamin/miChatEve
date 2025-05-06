@@ -1,4 +1,5 @@
 import { Routes } from '@angular/router';
+import { UserFormComponent } from './user-form/user-form.component';
 
 export const routes: Routes = [
   {
@@ -10,4 +11,8 @@ export const routes: Routes = [
     redirectTo: 'home',
     pathMatch: 'full',
   },
+  {
+    path: 'formulario',
+    component: UserFormComponent
+  }
 ];
