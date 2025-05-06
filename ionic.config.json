@@ -1,0 +1,7 @@
+{
+  "name": "miChatEve",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "angular-standalone"
+}
