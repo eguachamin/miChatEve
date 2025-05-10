@@ -7,16 +7,6 @@ export interface Message {
   createdAt: number;
   sender: string;
 }
-export interface UserFormData {
-  fullName: string;
-  email: string;
-  birthDate: Date;
-  gender: string;
-  preferences: string[]; // selección múltiple
-  country: string;
-  newsletter: boolean;
-  comments: string;
-}
 
 @Injectable({
   providedIn: 'root'

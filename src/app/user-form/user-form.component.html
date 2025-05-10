@@ -1,48 +1,61 @@
-<h1>Prueba Primer Trimestre</h1>
-<br>
-<h2>Evelyn Guachamin</h2>
-<br>
-<h3>Grupo 2</h3>
-<br>
-<form [formGroup]="userForm" (ngSubmit)="onSubmit()">
-  <p>Escribe Tu Nombre Completo</p>
-  <input formControlName="fullName" placeholder="Nombre Completo" />
-  <br>
-  <p>Escribe Tu Correo Electrónico</p>
-  <input formControlName="email" placeholder="Email" type="email" />
-  <br>
-  <p>Escribe Tu Fecha de Nacimiento</p>
-  <mat-form-field appearance="fill">
-    <mat-label>Fecha de nacimiento</mat-label>
-    <input matInput [matDatepicker]="picker" formControlName="birthDate" placeholder="dd/mm/aa" />
-    <mat-datepicker #picker></mat-datepicker> 
-  </mat-form-field>
-  <br>
-  <p>Seleciona tu Género</p>
-  <select formControlName="gender">
-    <option value="male">Masculino</option>
-    <option value="female">Femenino</option>
-  </select>
-  <br>
-  <p>Seleciona tu Deporte Favorito</p>
-  <select formControlName="preferences" multiple>
-    <option *ngFor="let option of preferenceOptions" [value]="option">{{ option }}</option>
-  </select>
-  <br>
-  <p>Seleciona tu País</p>
-  <select formControlName="country">
-    <option *ngFor="let c of countries" [value]="c">{{ c }}</option>
-  </select>
-  <br>
-  <p>Por favor Subscribete</p>
-  <label>
-    <input type="checkbox" formControlName="newsletter" />
-    Subscribirse
-  </label>
-  <br>
-  <p>Mandanos un comentario para mejorar</p>
-  <textarea formControlName="comments" placeholder="Escribe el comentario"></textarea>
-  <br>
-  <button type="submit" color="success">Enviar</button>
-</form>
-<br>
+<ion-header>
+  <ion-toolbar>
+    <ion-title>Formulario de Registro</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="ion-padding">
+  <h1>Prueba</h1>
+  <h2>Evelyn Guachamin</h2>
+  <h3>Grupo 1</h3>
+  <form [formGroup]="userForm" (ngSubmit)="onSubmit()">
+
+    <ion-item>
+      <ion-label position="floating">Nombre Completo</ion-label>
+      <ion-input formControlName="fullName"></ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-label position="floating">Correo Electrónico</ion-label>
+      <ion-input formControlName="email" type="email"></ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-label position="floating">Fecha de Nacimiento</ion-label>
+      <ion-datetime presentation="date" formControlName="birthDate"></ion-datetime>
+    </ion-item>
+
+    <ion-item>
+      <ion-label>Género</ion-label>
+      <ion-select formControlName="gender">
+        <ion-select-option *ngFor="let gender of genders" [value]="gender">{{ gender }}</ion-select-option>
+      </ion-select>
+    </ion-item>
+
+    <ion-item>
+      <ion-label>País</ion-label>
+      <ion-select formControlName="country">
+        <ion-select-option *ngFor="let c of countries" [value]="c">{{ c }}</ion-select-option>
+      </ion-select>
+    </ion-item>
+
+    <ion-item>
+      <ion-label>Hobbies</ion-label>
+      <ion-select formControlName="hobbies" multiple="true">
+        <ion-select-option *ngFor="let hobby of hobbies" [value]="hobby">{{ hobby }}</ion-select-option>
+      </ion-select>
+    </ion-item>
+
+    <ion-item>
+      <ion-label position="floating">Comentarios</ion-label>
+      <ion-textarea formControlName="comments"></ion-textarea>
+    </ion-item>
+
+    <ion-item lines="none">
+      <ion-label>¿Deseas recibir noticias?</ion-label>
+      <ion-checkbox slot="start" formControlName="newsletter"></ion-checkbox>
+    </ion-item>
+
+    <ion-button expand="block" type="submit" class="ion-margin-top">Guardar</ion-button>
+  </form>
+</ion-content>

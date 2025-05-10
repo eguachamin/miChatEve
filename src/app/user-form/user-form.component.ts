@@ -1,50 +1,45 @@
 import { Component } from '@angular/core';
-import { FormBuilder, FormGroup, ReactiveFormsModule, FormsModule } from '@angular/forms';
+import { FormBuilder, FormGroup, Validators, ReactiveFormsModule } from '@angular/forms';
+import { IonicModule } from '@ionic/angular';
 import { CommonModule } from '@angular/common';
-import { MatDatepickerModule } from '@angular/material/datepicker';
-import { MatFormFieldModule } from '@angular/material/form-field';
-import { MatInputModule } from '@angular/material/input';
-import { MatNativeDateModule } from '@angular/material/core';
 import { ChatService } from '../services/chat.service';
 
 @Component({
   selector: 'app-user-form',
   standalone: true,
-  imports: [
-    CommonModule,
-    ReactiveFormsModule,
-    FormsModule,
-    MatDatepickerModule,
-    MatFormFieldModule,
-    MatInputModule,
-    MatNativeDateModule
-  ],
+  imports: [IonicModule, CommonModule, ReactiveFormsModule],
   templateUrl: './user-form.component.html',
   styleUrls: ['./user-form.component.scss']
 })
 export class UserFormComponent {
   userForm: FormGroup;
-  preferenceOptions = ['Deportes', 'Música', 'Películas', 'Lectura'];
-  countries = ['México', 'España', 'Argentina', 'Colombia'];
+  hobbies = ['Lectura', 'Cine', 'Fútbol', 'Viajar'];
+  countries = ['Ecuador', 'Colombia', 'Argentina', 'México'];
+  genders = ['Masculino', 'Femenino', 'Otro'];
 
   constructor(private fb: FormBuilder, private chatService: ChatService) {
     this.userForm = this.fb.group({
-      fullName: [''],
-      email: [''],
-      birthDate: [null],  // Asegúrate de que la fecha inicial sea null o alguna fecha válida
-      gender: [''],
-      preferences: [[]],
-      country: [''],
-      newsletter: [false],
-      comments: ['']
+      fullName: ['', Validators.required],
+      email: ['', [Validators.required, Validators.email]],
+      birthDate: ['', Validators.required],
+      gender: ['', Validators.required],
+      country: ['', Validators.required],
+      hobbies: [[]],
+      comments: [''],
+      newsletter: [false]
     });
   }
 
   onSubmit() {
-    const formData = this.userForm.value;
-    this.chatService.saveUserForm(formData).then(() => {
-      console.log('Información guardada');
-      this.userForm.reset();
-    });
+    if (this.userForm.valid) {
+      this.chatService.saveUserForm(this.userForm.value).then(() => {
+        alert('Formulario guardado correctamente');
+        this.userForm.reset();
+      }).catch(err => {
+        alert('Error al guardar: ' + err);
+      });
+    } else {
+      alert('Por favor completa todos los campos requeridos.');
+    }
   }
 }

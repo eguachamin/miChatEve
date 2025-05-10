@@ -1,5 +1,4 @@
 import { ComponentFixture, TestBed, waitForAsync } from '@angular/core/testing';
-import { IonicModule } from '@ionic/angular';
 
 import { UserFormComponent } from './user-form.component';
 
@@ -9,8 +8,7 @@ describe('UserFormComponent', () => {
 
   beforeEach(waitForAsync(() => {
     TestBed.configureTestingModule({
-      declarations: [ UserFormComponent ],
-      imports: [IonicModule.forRoot()]
+      imports: [UserFormComponent],
     }).compileComponents();
 
     fixture = TestBed.createComponent(UserFormComponent);
